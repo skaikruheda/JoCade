@@ -355,6 +355,11 @@ input {
     left: 0;
 }
 
+#score-label {
+    text-align: center;
+    margin-top: 50px;
+}
+
 .flappy-jo-container > h1 {
     text-align: center;
     margin-top: 100px;

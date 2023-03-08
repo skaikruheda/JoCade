@@ -18,6 +18,15 @@ function gameMenu() {
     `;
 }
 
+function gameOver() {
+    flappyJoContainer.innerHTML = `
+        <h1>Game Over</h1>
+        <h2 id="score-label">A</h2>
+        <button onclick="startGame()">Try Again</button>
+        <button onclick="gameMenu()">Home</button>
+    `;
+}
+
 function startGame() {
     flappyJoContainer.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
@@ -42,9 +51,18 @@ function startGame() {
         }
     });
 
-    setInterval(() => {
+    document.querySelector('#return-btn').addEventListener('click', () => {
+        clearTimeout(alwaysRun);
+    });
+
+    let alwaysRun = setInterval(() => {
         let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
         document.querySelector('#player').style.top = (currentTop + 2) + 'px';
+
+        if (currentTop <= 0 || currentTop >= 475) {
+            gameOver();
+            clearInterval(alwaysRun);
+        }
     }, 10);
 
     function jumpAction() {
