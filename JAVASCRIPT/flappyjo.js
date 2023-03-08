@@ -35,6 +35,11 @@ function startGame() {
         let random = Math.floor(Math.random() * 6);
         gap.style.top = `${options[random]}%`;
     });
+
+    setInterval(() => {
+        let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
+        document.querySelector('#player').style.top = (currentTop + 1) + 'px';
+    }, 1);
 }
 
 function shopMenu() {
