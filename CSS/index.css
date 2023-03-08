@@ -346,40 +346,13 @@ input {
     border: 1px solid black;
     margin: 50px auto;
     overflow: hidden;
-}
-
-#block {
-    width: 10%;
-    height: 100%;
-    background-color: black;
     position: relative;
-    left: 90%;
-    animation: block 2s infinite linear;
 }
 
-@keyframes block {
-    0%{left:90%}
-    100%{left: -10%}
-}
-
-#hole {
-    width: 10%;
-    height: 35%;
-    background-color: rgb(237, 219, 199);
-    position: relative;
-    left: 90%;
-    top: -40%;
-    animation: block 2s infinite linear;
-}
-
-#character {
-    width: 5%;
-    height: 5%;
-    background-color: red;
+#return-btn {
     position: absolute;
-    top: 50%;
-    left: 10%;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
 }
 
 .flappy-jo-container > h1 {

@@ -21,15 +21,17 @@ function gameMenu() {
 
 function startGame() {
     flappyJoContainer.innerHTML = `
-        <div id="block"></div>
-        <div id="hole"></div>
-        <div id="character"></div>
+        <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
     `;
+    document.querySelector('#return-btn').addEventListener('click', () => {
+        gameMenu();
+    });
 }
 
 function shopMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(253, 138, 138)';
     flappyJoContainer.innerHTML = `
+        <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <h1 id="menu-title">Shop</h1>
         <h2 class="flappy-shop">Character</h2>
         <div class="game-options">
@@ -53,11 +55,15 @@ function shopMenu() {
             <div class="game-btn">Yellow</div>
         </div>
     `;
+    document.querySelector('#return-btn').addEventListener('click', () => {
+        gameMenu();
+    });
 }
 
 function settingMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(158, 161, 212)';
     flappyJoContainer.innerHTML = `
+        <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <h1 id="menu-title">Setting</h1>
         <h2 class="flappy-shop">Difficulty</h2>
         <div class="game-options">
@@ -77,4 +83,19 @@ function settingMenu() {
             <div class="game-btn">Right</div>
         </div>
     `;
+    document.querySelector('#return-btn').addEventListener('click', () => {
+        gameMenu();
+    });
 }
+
+window.addEventListener('click', (event) => {
+    if (event.target.getAttribute('id') === 'start-btn') {
+        startGame();
+    }
+    else if (event.target.getAttribute('id') === 'marketplace-btn') {
+        shopMenu();
+    }
+    else if (event.target.getAttribute('id') === 'setting-btn') {
+        settingMenu();
+    }
+});
