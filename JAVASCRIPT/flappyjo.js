@@ -36,10 +36,21 @@ function startGame() {
         gap.style.top = `${options[random]}%`;
     });
 
+    flappyJoContainer.addEventListener('keydown', (event) => {
+        if (event.key === ' ' || event.key === 'ArrowUp') {
+            jumpAction();
+        }
+    });
+
     setInterval(() => {
         let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
-        document.querySelector('#player').style.top = (currentTop + 1) + 'px';
-    }, 1);
+        document.querySelector('#player').style.top = (currentTop + 2) + 'px';
+    }, 10);
+
+    function jumpAction() {
+        let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
+        document.querySelector('#player').style.top = (currentTop - 90) + 'px';
+    }
 }
 
 function shopMenu() {
