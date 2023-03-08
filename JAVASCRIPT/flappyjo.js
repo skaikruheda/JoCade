@@ -7,7 +7,6 @@ if (currentUserFromLocalStorage) {
 
 document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
 let flappyJoContainer = document.querySelector('.flappy-jo-container');
-let startButton;
 
 function gameMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(241, 247, 181)';
@@ -23,9 +22,19 @@ function startGame() {
     flappyJoContainer.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <div id="obstacle"></div>
-        <div id="hole"></div>
-        <div id="character"></div>
+        <div id="gap"></div>
+        <div id="player"></div>
     `;
+
+    let obstacle = document.querySelector('#obstacle');
+    let gap = document.querySelector('#gap');
+    let player = document.querySelector('#player');
+
+    gap.addEventListener('animationiteration', () => {
+        let options = [-40, -50, -60, -70, -80, -90];
+        let random = Math.floor(Math.random() * 6);
+        gap.style.top = `${options[random]}%`;
+    });
 }
 
 function shopMenu() {
@@ -80,9 +89,6 @@ function settingMenu() {
             <div class="game-btn">Right</div>
         </div>
     `;
-    document.querySelector('#return-btn').addEventListener('click', () => {
-        gameMenu();
-    });
 }
 
 flappyJoContainer.addEventListener('click', (event) => {

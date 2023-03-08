@@ -412,7 +412,7 @@ input {
     background-color: black;
     position: relative;
     left: 100%;
-    animation: obstacle 2s infinite;
+    animation: obstacle 2s infinite linear;
 }
 
 @keyframes obstacle {
@@ -422,4 +422,14 @@ input {
     100% {
         left: -10%;
     }
+}
+
+#gap {
+    width: 10%;
+    height: 30%;
+    background-color: rgb(241, 247, 181);
+    position: relative;
+    left: 100%;
+    top: -40%;
+    animation: obstacle 2s infinite linear;
 }
