@@ -105,3 +105,5 @@ flappyJoContainer.addEventListener('click', (event) => {
         gameMenu();
     }
 });
+
+startGame();
