@@ -405,3 +405,11 @@ input {
     padding: 10px 15px;
     margin: 10px;
 }
+
+#block {
+    width: 10%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+    left: 100%;
+}

@@ -22,10 +22,10 @@ function gameMenu() {
 function startGame() {
     flappyJoContainer.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
+        <div id="block"></div>
+        <div id="hole"></div>
+        <div id="character"></div>
     `;
-    document.querySelector('#return-btn').addEventListener('click', () => {
-        gameMenu();
-    });
 }
 
 function shopMenu() {
@@ -55,9 +55,6 @@ function shopMenu() {
             <div class="game-btn">Yellow</div>
         </div>
     `;
-    document.querySelector('#return-btn').addEventListener('click', () => {
-        gameMenu();
-    });
 }
 
 function settingMenu() {
@@ -98,4 +95,9 @@ window.addEventListener('click', (event) => {
     else if (event.target.getAttribute('id') === 'setting-btn') {
         settingMenu();
     }
+    else if (event.target.getAttribute('id') === 'return-btn') {
+        gameMenu();
+    }
 });
+
+startGame();
