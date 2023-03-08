@@ -406,10 +406,20 @@ input {
     margin: 10px;
 }
 
-#block {
+#obstacle {
     width: 10%;
     height: 100%;
     background-color: black;
     position: relative;
     left: 100%;
+    animation: obstacle 2s infinite;
+}
+
+@keyframes obstacle {
+    0% {
+        left: 90%;
+    }
+    100% {
+        left: -10%;
+    }
 }
