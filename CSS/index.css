@@ -341,6 +341,7 @@ input {
 
 .flappy-jo-container {
     width: 90%;
+    background-color: rgb(241, 247, 181);
     height: 500px;
     border: 1px solid black;
     margin: 50px auto;
@@ -398,31 +399,36 @@ input {
     border-radius: 20px;
 }
 
-#shop-title {
+#menu-title {
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
     margin-top: 50px;
+    border-radius: 10px;
+    background-color: rgb(168, 209, 209);
 }
 
 .flappy-shop {
-    text-align: left;
+    text-align: center;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 5px;
     width: 100%;
     padding: 10px;
 }
 
-.character-btn {
+.game-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.game-btn {
     text-align: center;
     width: 25%;
     height: 10%;
     border: 1px solid black;
     padding: 10px 15px;
     margin: 10px;
-}
-
-.character-options, .obstacle-options, .background-options {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
 }

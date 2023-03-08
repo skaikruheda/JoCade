@@ -27,32 +27,54 @@ function startGame() {
     `;
 }
 
-function shopeMenu() {
+function shopMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(253, 138, 138)';
     flappyJoContainer.innerHTML = `
-        <h1 id="shop-title">Shop</h1>
+        <h1 id="menu-title">Shop</h1>
         <h2 class="flappy-shop">Character</h2>
-        <div class="character-options">
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
+        <div class="game-options">
+            <div class="game-btn">Red</div>
+            <div class="game-btn">Blue</div>
+            <div class="game-btn">Green</div>
+            <div class="game-btn">Yellow</div>
         </div>
         <h2 class="flappy-shop">Obstacle</h2>
-        <div class="obstacle-options">
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
+        <div class="game-options">
+            <div class="game-btn">Red</div>
+            <div class="game-btn">Blue</div>
+            <div class="game-btn">Green</div>
+            <div class="game-btn">Yellow</div>
         </div>
         <h2 class="flappy-shop">Background</h2>
-        <div class="background-options">
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
-            <div class="character-btn">Red</div>
+        <div class="game-options">
+            <div class="game-btn">Red</div>
+            <div class="game-btn">Blue</div>
+            <div class="game-btn">Green</div>
+            <div class="game-btn">Yellow</div>
         </div>
     `;
 }
 
-shopeMenu();
+function settingMenu() {
+    flappyJoContainer.style.backgroundColor = 'rgb(158, 161, 212)';
+    flappyJoContainer.innerHTML = `
+        <h1 id="menu-title">Setting</h1>
+        <h2 class="flappy-shop">Difficulty</h2>
+        <div class="game-options">
+            <div class="game-btn">Easy</div>
+            <div class="game-btn">Medium</div>
+            <div class="game-btn">Hard</div>
+        </div>
+        <h2 class="flappy-shop">Sound</h2>
+        <div class="game-options">
+            <div class="game-btn">On</div>
+            <div class="game-btn">Off</div>
+        </div>
+        <h2 class="flappy-shop">Score Position</h2>
+        <div class="game-options">
+            <div class="game-btn">Left</div>
+            <div class="game-btn">Middle</div>
+            <div class="game-btn">Right</div>
+        </div>
+    `;
+}
