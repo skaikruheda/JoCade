@@ -45,11 +45,13 @@ function startGame() {
         gap.style.top = `${options[random]}%`;
     });
 
-    flappyJoContainer.addEventListener('keydown', (event) => {
+    const jumpHandler = (event) => {
         if (event.key === ' ' || event.key === 'ArrowUp') {
             jumpAction();
         }
-    });
+    };
+
+    flappyJoContainer.addEventListener('keydown', jumpHandler);
 
     document.querySelector('#return-btn').addEventListener('click', () => {
         clearTimeout(alwaysRun);
@@ -61,6 +63,7 @@ function startGame() {
 
         if (currentTop <= 0 || currentTop >= 475) {
             gameOver();
+            flappyJoContainer.removeEventListener('keydown', jumpHandler);
             clearInterval(alwaysRun);
         }
     }, 10);
