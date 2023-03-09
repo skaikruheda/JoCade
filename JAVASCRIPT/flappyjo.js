@@ -35,6 +35,13 @@ function startGame() {
         <div id="player"></div>
     `;
 
+    function endGame() {
+        flappyJoContainer.removeEventListener('keydown', jumpHandler);
+        clearInterval(alwaysRun);
+        setTimeout(gameOver, 100);
+        return;
+    }
+
     let obstacle = document.querySelector('#obstacle');
     let gap = document.querySelector('#gap');
     let player = document.querySelector('#player');
@@ -62,22 +69,16 @@ function startGame() {
         document.querySelector('#player').style.top = (currentTop + 2) + 'px';
 
         if (currentTop <= 0 || currentTop >= 475) {
-            gameOver();
-            flappyJoContainer.removeEventListener('keydown', jumpHandler);
-            clearInterval(alwaysRun);
-            return;
+            endGame();
         }
 
         const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
         const animation = document.getAnimations().find(anim => anim.animationName === animationName);
         
-        if (animation.currentTime >= 1660) {
+        if (animation.currentTime >= 1660 && animation.currentTime <= 1956) {
             if (window.getComputedStyle(gap).getPropertyValue('top') === '-199.195px') {
-                if (player.style.top <= '299px' || player.style.top >= '423px') {
-                    gameOver();
-                    flappyJoContainer.removeEventListener('keydown', jumpHandler);
-                    clearInterval(alwaysRun);
-                    return;
+                if (player.style.top <= '298px' || player.style.top >= '424px') {
+                    endGame();
                 }
             }
         }
@@ -85,7 +86,7 @@ function startGame() {
 
     function jumpAction() {
         let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
-        document.querySelector('#player').style.top = (currentTop - 90) + 'px';
+        document.querySelector('#player').style.top = (currentTop - 70) + 'px';
     }
 }
 
