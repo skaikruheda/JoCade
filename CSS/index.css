@@ -417,7 +417,7 @@ input {
     background-color: black;
     position: relative;
     left: 100%;
-    animation: obstacle 2s infinite linear;
+    animation: obstacle 2000ms infinite linear;
 }
 
 @keyframes obstacle {
@@ -436,7 +436,7 @@ input {
     position: relative;
     left: 100%;
     top: -40%;
-    animation: obstacle 2s infinite linear;
+    animation: obstacle 2000ms infinite linear;
 }
 
 #player {

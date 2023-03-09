@@ -65,6 +65,21 @@ function startGame() {
             gameOver();
             flappyJoContainer.removeEventListener('keydown', jumpHandler);
             clearInterval(alwaysRun);
+            return;
+        }
+
+        const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
+        const animation = document.getAnimations().find(anim => anim.animationName === animationName);
+        
+        if (animation.currentTime >= 1660) {
+            if (window.getComputedStyle(gap).getPropertyValue('top') === '-199.195px') {
+                if (player.style.top <= '299px' || player.style.top >= '423px') {
+                    gameOver();
+                    flappyJoContainer.removeEventListener('keydown', jumpHandler);
+                    clearInterval(alwaysRun);
+                    return;
+                }
+            }
         }
     }, 10);
 
