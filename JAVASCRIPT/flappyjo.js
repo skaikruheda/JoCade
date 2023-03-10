@@ -38,17 +38,19 @@ function startGame() {
     function endGame() {
         flappyJoContainer.removeEventListener('keydown', jumpHandler);
         clearInterval(alwaysRun);
-        setTimeout(gameOver, 100);
+        setTimeout(gameOver, 50);
         return;
     }
 
     let obstacle = document.querySelector('#obstacle');
     let gap = document.querySelector('#gap');
     let player = document.querySelector('#player');
+    const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
+    const animation = document.getAnimations().find(anim => anim.animationName === animationName);
 
     gap.addEventListener('animationiteration', () => {
-        let options = [-40, -50, -60, -70, -80, -90];
-        let random = Math.floor(Math.random() * 6);
+        let options = [-40, -50, -60, -70];
+        let random = Math.floor(Math.random() * 4);
         gap.style.top = `${options[random]}%`;
     });
 
@@ -71,14 +73,34 @@ function startGame() {
         if (currentTop <= 0 || currentTop >= 475) {
             endGame();
         }
-
-        const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
-        const animation = document.getAnimations().find(anim => anim.animationName === animationName);
         
         if (animation.currentTime >= 1660 && animation.currentTime <= 1956) {
             if (window.getComputedStyle(gap).getPropertyValue('top') === '-199.195px') {
                 if (player.style.top <= '298px' || player.style.top >= '424px') {
                     endGame();
+                }
+            }
+        }
+        
+        if (animation.currentTime >= 3660 && animation.currentTime <= 3956) {
+            if (window.getComputedStyle(gap).getPropertyValue('top') === '-199.195px') {
+                if (player.style.top <= '299px' || player.style.top >= '423px') {
+                    endGame();
+                }
+            }
+            else if (window.getComputedStyle(gap).getPropertyValue('top') === '-249px') {
+                if (player.style.top <= '249px' || player.style.top >= '374px') {
+                    endGame();
+                }
+            }
+            else if (window.getComputedStyle(gap).getPropertyValue('top') === '-298.797px') {
+                if (player.style.top <= '199px' || player.style.top >= '324px') {
+                    endGame();
+                }
+            }
+            else if (window.getComputedStyle(gap).getPropertyValue('top') === '-348.594px') {
+                if (player.style.top <= '149px' || player.style.top >= '274px') {
+                       endGame();
                 }
             }
         }
