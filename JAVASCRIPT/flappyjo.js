@@ -16,12 +16,12 @@ function gameMenu() {
         <button id="marketplace-btn">Marketplace</button>
         <button id="setting-btn">Settings</button>
     `;
+    document.querySelector('#game-score').textContent = '';
 }
 
 function gameOver() {
     flappyJoContainer.innerHTML = `
-        <h1>Game Over</h1>
-        <h2 id="score-label">A</h2>
+        <h1 style="margin-bottom: 90px;">Game Over</h1>
         <button onclick="startGame()">Try Again</button>
         <button onclick="gameMenu()">Home</button>
     `;
@@ -36,6 +36,8 @@ function startGame() {
         <div id="player"></div>
     `;
 
+    document.querySelector('#game-score').style.visibility = 'visible';
+
     function endGame() {
         flappyJoContainer.removeEventListener('keydown', jumpHandler);
         clearInterval(alwaysRun);
@@ -48,6 +50,7 @@ function startGame() {
     let player = document.querySelector('#player');
     let startTime = 1660;
     let endTime = 1956;
+    let gameScore = 0;
     const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
     const animation = document.getAnimations().find(anim => anim.animationName === animationName);
 
@@ -55,6 +58,7 @@ function startGame() {
         let options = [-40, -50, -60, -70];
         let random = Math.floor(Math.random() * 4);
         gap.style.top = `${options[random]}%`;
+        gameScore = gameScore + 1;
     });
 
     const jumpHandler = (event) => {
@@ -77,6 +81,7 @@ function startGame() {
     let alwaysRun = setInterval(() => {
         let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
         document.querySelector('#player').style.top = (currentTop + 2) + 'px';
+        document.querySelector('#game-score').textContent = 'Score: ' + gameScore;
 
         if (currentTop <= 0 || currentTop >= 475) {
             endGame();
@@ -180,5 +185,3 @@ flappyJoContainer.addEventListener('click', (event) => {
         gameMenu();
     }
 });
-
-startGame();

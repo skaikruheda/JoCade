@@ -345,19 +345,24 @@ input {
     height: 500px;
     border: 1px solid black;
     margin: 50px auto;
+    margin-bottom: 0;
     overflow: hidden;
     position: relative;
+}
+
+#game-score {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgb(241, 247, 181);
+    font-size: 20px;
+    visibility: hidden;
 }
 
 #return-btn {
     position: absolute;
     top: 0;
     left: 0;
-}
-
-#score-label {
-    text-align: center;
-    margin-top: 50px;
 }
 
 .flappy-jo-container > h1 {
