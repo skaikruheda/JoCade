@@ -45,6 +45,8 @@ function startGame() {
     let obstacle = document.querySelector('#obstacle');
     let gap = document.querySelector('#gap');
     let player = document.querySelector('#player');
+    let startTime = 1660;
+    let endTime = 1956;
     const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
     const animation = document.getAnimations().find(anim => anim.animationName === animationName);
 
@@ -66,6 +68,11 @@ function startGame() {
         clearTimeout(alwaysRun);
     });
 
+    setInterval(() => {
+        startTime += 2000;
+        endTime = startTime + 296;
+    }, 2200);
+
     let alwaysRun = setInterval(() => {
         let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
         document.querySelector('#player').style.top = (currentTop + 2) + 'px';
@@ -73,16 +80,8 @@ function startGame() {
         if (currentTop <= 0 || currentTop >= 475) {
             endGame();
         }
-        
-        if (animation.currentTime >= 1660 && animation.currentTime <= 1956) {
-            if (window.getComputedStyle(gap).getPropertyValue('top') === '-199.195px') {
-                if (player.style.top <= '298px' || player.style.top >= '424px') {
-                    endGame();
-                }
-            }
-        }
-        
-        if (animation.currentTime >= 3660 && animation.currentTime <= 3956) {
+
+        if (animation.currentTime >= startTime && animation.currentTime <= endTime) {
             if (window.getComputedStyle(gap).getPropertyValue('top') === '-199.195px') {
                 if (player.style.top <= '299px' || player.style.top >= '423px') {
                     endGame();
