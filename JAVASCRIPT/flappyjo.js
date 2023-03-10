@@ -28,6 +28,7 @@ function gameOver() {
 }
 
 function startGame() {
+    flappyJoContainer.focus();
     flappyJoContainer.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <div id="obstacle"></div>
@@ -71,7 +72,7 @@ function startGame() {
     setInterval(() => {
         startTime += 2000;
         endTime = startTime + 296;
-    }, 2200);
+    }, 2020);
 
     let alwaysRun = setInterval(() => {
         let currentTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
