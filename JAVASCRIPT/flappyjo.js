@@ -19,14 +19,6 @@ function gameMenu() {
     document.querySelector('#game-score').textContent = '';
 }
 
-function gameOver() {
-    flappyJoContainer.innerHTML = `
-        <h1 style="margin-bottom: 90px;">Game Over</h1>
-        <button onclick="startGame()">Try Again</button>
-        <button onclick="gameMenu()">Home</button>
-    `;
-}
-
 function startGame() {
     flappyJoContainer.focus();
     flappyJoContainer.innerHTML = `
@@ -37,6 +29,20 @@ function startGame() {
     `;
 
     document.querySelector('#game-score').style.visibility = 'visible';
+
+    function gameOver() {
+        flappyJoContainer.innerHTML = `
+            <h1>Game Over</h1>
+            <h2 id="earned-points"></h2>
+            <button onclick="startGame()">Try Again</button>
+            <button onclick="gameMenu()">Home</button>
+        `;
+        let pointsToJoCoins = gameScore * 5;
+        document.querySelector('#earned-points').textContent = 'You earned ' + pointsToJoCoins + ' JOCOINS';
+        currentUser.points += pointsToJoCoins;
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
+    }
 
     function endGame() {
         flappyJoContainer.removeEventListener('keydown', jumpHandler);
