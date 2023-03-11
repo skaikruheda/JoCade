@@ -111,7 +111,7 @@ function startGame() {
             }
             else if (window.getComputedStyle(gap).getPropertyValue('top') === '-348.594px') {
                 if (player.style.top <= '149px' || player.style.top >= '274px') {
-                       endGame();
+                    endGame();
                 }
             }
         }
@@ -128,28 +128,157 @@ function shopMenu() {
     flappyJoContainer.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <h1 id="menu-title">Shop</h1>
+        <div id="pricing-info">Red - 250, Blue - 500, Green - 750, Yellow - 1000</div>
+        <div id="pricing-error">(0_0)</div>
         <h2 class="flappy-shop">Character</h2>
         <div class="game-options">
-            <div class="game-btn">Red</div>
-            <div class="game-btn">Blue</div>
-            <div class="game-btn">Green</div>
-            <div class="game-btn">Yellow</div>
+            <div class="game-btn red-character">Red</div>
+            <div class="game-btn blue-character">Blue</div>
+            <div class="game-btn green-character">Green</div>
+            <div class="game-btn yellow-character">Yellow</div>
         </div>
         <h2 class="flappy-shop">Obstacle</h2>
         <div class="game-options">
-            <div class="game-btn">Red</div>
-            <div class="game-btn">Blue</div>
-            <div class="game-btn">Green</div>
-            <div class="game-btn">Yellow</div>
+            <div class="game-btn red-obstacle">Red</div>
+            <div class="game-btn blue-obstacle">Blue</div>
+            <div class="game-btn green-obstacle">Green</div>
+            <div class="game-btn yellow-obstacle">Yellow</div>
         </div>
         <h2 class="flappy-shop">Background</h2>
         <div class="game-options">
-            <div class="game-btn">Red</div>
-            <div class="game-btn">Blue</div>
-            <div class="game-btn">Green</div>
-            <div class="game-btn">Yellow</div>
+            <div class="game-btn red-background">Red</div>
+            <div class="game-btn blue-background">Blue</div>
+            <div class="game-btn green-background">Green</div>
+            <div class="game-btn yellow-background">Yellow</div>
         </div>
     `;
+
+    document.querySelectorAll('.game-options').forEach((value, index, array) => {
+        value.addEventListener('click', (event) => {
+            if (event.target.classList.length >= 2) {
+                if (event.target.classList[1].includes('red')) {
+                    let selectedItem = event.target.classList[1];
+                    if (currentUser.points < 250) {
+                        document.querySelector('#pricing-error').textContent = 'Insufficient Balance';
+                        setTimeout(() => {
+                            document.querySelector('#pricing-error').textContent = '(0_0)';
+                        }, 1000);
+                    }
+                    else {
+                        let alreadyBought = false;
+                        for (let i = 0; i < currentUser.items.length; i++) {
+                            if (currentUser.items[i] === selectedItem) {
+                                alreadyBought = true;
+                                break;
+                            }
+                        }
+                        if (alreadyBought) {
+                            document.querySelector('#pricing-error').textContent = 'You already bought this!';
+                            setTimeout(() => {
+                                document.querySelector('#pricing-error').textContent = '(0_0)';
+                            }, 1000);   
+                        }
+                        else {
+                            currentUser.points -= 250;
+                            currentUser.items.push(event.target.classList[1]);
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
+                        }
+                    }
+                }
+                else if (event.target.classList[1].includes('blue')) {
+                    let selectedItem = event.target.classList[1];
+                    if (currentUser.points < 500) {
+                        document.querySelector('#pricing-error').textContent = 'Insufficient Balance';
+                        setTimeout(() => {
+                            document.querySelector('#pricing-error').textContent = '(0_0)';
+                        }, 1000);
+                    }
+                    else {
+                        let alreadyBought = false;
+                        for (let i = 0; i < currentUser.items.length; i++) {
+                            if (currentUser.items[i] === selectedItem) {
+                                alreadyBought = true;
+                                break;
+                            }
+                        }
+                        if (alreadyBought) {
+                            document.querySelector('#pricing-error').textContent = 'You already bought this!';
+                            setTimeout(() => {
+                                document.querySelector('#pricing-error').textContent = '(0_0)';
+                            }, 1000);   
+                        }
+                        else {
+                            currentUser.points -= 500;
+                            currentUser.items.push(event.target.classList[1]);
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
+                        }
+                    }
+                }
+                else if (event.target.classList[1].includes('green')) {
+                    let selectedItem = event.target.classList[1];
+                    if (currentUser.points < 750) {
+                        document.querySelector('#pricing-error').textContent = 'Insufficient Balance';
+                        setTimeout(() => {
+                            document.querySelector('#pricing-error').textContent = '(0_0)';
+                        }, 1000);
+                    }
+                    else {
+                        let alreadyBought = false;
+                        for (let i = 0; i < currentUser.items.length; i++) {
+                            if (currentUser.items[i] === selectedItem) {
+                                alreadyBought = true;
+                                break;
+                            }
+                        }
+                        if (alreadyBought) {
+                            document.querySelector('#pricing-error').textContent = 'You already bought this!';
+                            setTimeout(() => {
+                                document.querySelector('#pricing-error').textContent = '(0_0)';
+                            }, 1000);   
+                        }
+                        else {
+                            currentUser.points -= 750;
+                            currentUser.items.push(event.target.classList[1]);
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
+                        }
+                    }
+                }
+                else if (event.target.classList[1].includes('yellow')) {
+                    let selectedItem = event.target.classList[1];
+                    if (currentUser.points < 1000) {
+                        document.querySelector('#pricing-error').textContent = 'Insufficient Balance';
+                        setTimeout(() => {
+                            document.querySelector('#pricing-error').textContent = '(0_0)';
+                        }, 1000);
+                    }
+                    else {
+                        let alreadyBought = false;
+                        for (let i = 0; i < currentUser.items.length; i++) {
+                            if (currentUser.items[i] === selectedItem) {
+                                alreadyBought = true;
+                                break;
+                            }
+                        }
+                        if (alreadyBought) {
+                            document.querySelector('#pricing-error').textContent = 'You already bought this!';
+                            setTimeout(() => {
+                                document.querySelector('#pricing-error').textContent = '(0_0)';
+                            }, 1000);   
+                        }
+                        else {
+                            currentUser.points -= 1000;
+                            currentUser.items.push(event.target.classList[1]);
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
+                        }
+                    }
+                }
+            }
+        });
+    });
 }
 
 function settingMenu() {
