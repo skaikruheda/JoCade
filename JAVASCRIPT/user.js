@@ -25,7 +25,7 @@ const userItems = document.querySelector('.user-items');
 
 for (let i = 0; i < currentUser.items.length; i++) {
     let li = document.createElement('li');
-    li.textContent = currentUser.items[i];
+    li.textContent = currentUser.items[i].split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
     userItems.append(li);
     li.style.margin = '10px';
 }
