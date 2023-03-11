@@ -8,13 +8,19 @@ if (currentUserFromLocalStorage) {
 document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
 let flappyJoContainer = document.querySelector('.flappy-jo-container');
 
+let customizationValue = new Map([
+    ['character', undefined],
+    ['obstacle', undefined],
+    ['background', undefined]
+]);
+
 function gameMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(241, 247, 181)';
     flappyJoContainer.innerHTML = `
         <h1>Flappy Jo</h1>
         <button id="start-btn">Start</button>
         <button id="marketplace-btn">Marketplace</button>
-        <button id="setting-btn">Settings</button>
+        <button id="customization-btn">Customization</button>
     `;
     document.querySelector('#game-score').textContent = '';
 }
@@ -59,6 +65,20 @@ function startGame() {
     let gameScore = 0;
     const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
     const animation = document.getAnimations().find(anim => anim.animationName === animationName);
+
+    let customizationValueFromLocalStorage = JSON.parse(localStorage.getItem('customizationValue'));
+    if (customizationValueFromLocalStorage) {
+        if (customizationValueFromLocalStorage[0][1] !== null) {
+            player.style.backgroundColor = `${customizationValueFromLocalStorage[0][1]}`;
+        }
+        if (customizationValueFromLocalStorage[1][1] !== null) {
+            obstacle.style.backgroundColor = `${customizationValueFromLocalStorage[1][1]}`;
+        }
+        if (customizationValueFromLocalStorage[2][1] !== null) {
+            flappyJoContainer.style.backgroundColor = `${customizationValueFromLocalStorage[2][1]}`;
+            gap.style.backgroundColor = `${customizationValueFromLocalStorage[2][1]}`;
+        }
+    }
 
     gap.addEventListener('animationiteration', () => {
         let options = [-40, -50, -60, -70];
@@ -304,29 +324,44 @@ function shopMenu() {
     });
 }
 
-function settingMenu() {
+function customizationMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(158, 161, 212)';
     flappyJoContainer.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
-        <h1 id="menu-title">Setting</h1>
-        <h2 class="flappy-shop">Difficulty</h2>
+        <h1 id="menu-title">Customization</h1>
+        <h2 class="flappy-shop">Character</h2>
         <div class="game-options">
-            <div class="game-btn">Easy</div>
-            <div class="game-btn">Medium</div>
-            <div class="game-btn">Hard</div>
+            <div class="game-btn red-character">Red</div>
+            <div class="game-btn blue-character">Blue</div>
+            <div class="game-btn green-character">Green</div>
+            <div class="game-btn yellow-character">Yellow</div>
         </div>
-        <h2 class="flappy-shop">Sound</h2>
+        <h2 class="flappy-shop">Obstacle</h2>
         <div class="game-options">
-            <div class="game-btn">On</div>
-            <div class="game-btn">Off</div>
+            <div class="game-btn red-obstacle">Red</div>
+            <div class="game-btn blue-obstacle">Blue</div>
+            <div class="game-btn green-obstacle">Green</div>
+            <div class="game-btn yellow-obstacle">Yellow</div>
         </div>
-        <h2 class="flappy-shop">Score Position</h2>
+        <h2 class="flappy-shop">Background</h2>
         <div class="game-options">
-            <div class="game-btn">Left</div>
-            <div class="game-btn">Middle</div>
-            <div class="game-btn">Right</div>
+            <div class="game-btn red-background">Red</div>
+            <div class="game-btn blue-background">Blue</div>
+            <div class="game-btn green-background">Green</div>
+            <div class="game-btn yellow-background">Yellow</div>
         </div>
     `;
+
+    document.querySelectorAll('.game-options').forEach((value, index, array) => {
+        value.addEventListener('click', (event) => {
+            if (event.target.classList.length >= 2) {
+                if (currentUser.items.includes(event.target.classList[1])) {
+                    customizationValue.set(`${event.target.classList[1].split('-')[1]}`, `${event.target.classList[1].split('-')[0]}`);
+                    localStorage.setItem('customizationValue', JSON.stringify(Array.from(customizationValue)));
+                }
+            }
+        });
+    });
 }
 
 flappyJoContainer.addEventListener('click', (event) => {
@@ -336,8 +371,8 @@ flappyJoContainer.addEventListener('click', (event) => {
     else if (event.target.getAttribute('id') === 'marketplace-btn') {
         shopMenu();
     }
-    else if (event.target.getAttribute('id') === 'setting-btn') {
-        settingMenu();
+    else if (event.target.getAttribute('id') === 'customization-btn') {
+        customizationMenu();
     }
     else if (event.target.getAttribute('id') === 'return-btn') {
         gameMenu();
