@@ -21,9 +21,9 @@ function User(userName, passWord, points) {
     this.points = points;
     this.items = [];
     this.flappyJoCustomization = new Map([
-        ['character', undefined],
-        ['obstacle', undefined],
-        ['background', undefined]
+        ['character', 'coral'],
+        ['obstacle', 'black'],
+        ['background', 'rgb(249, 245, 231)']
     ]);
 };
 

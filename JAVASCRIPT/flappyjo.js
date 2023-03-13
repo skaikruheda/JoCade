@@ -341,7 +341,22 @@ function customizationMenu() {
             <div class="game-btn green-background">Green</div>
             <div class="game-btn yellow-background">Yellow</div>
         </div>
+        <div class="selection-types">
+            <div id="player-selection">Player</div>
+            <div id="obstacle-selection">Obstacle</div>
+            <div id="background-selection">Background</div>
+        </div>
     `;
+
+    if (currentUser.flappyJoCustomization[0][1] !== 'coral') {
+        document.querySelector('#player-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[0][1]}`;
+    }
+    if (currentUser.flappyJoCustomization[1][1] !== 'black') {
+        document.querySelector('#obstacle-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[1][1]}`;
+    }
+    if (currentUser.flappyJoCustomization[2][1] !== 'rgb(249, 245, 231)') {
+        document.querySelector('#background-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
+    }
 
     document.querySelectorAll('.game-options').forEach((value, index, array) => {
         value.addEventListener('click', (event) => {
@@ -351,6 +366,15 @@ function customizationMenu() {
                     currentUserMapObject.set(`${event.target.classList[1].split('-')[1]}`, `${event.target.classList[1].split('-')[0]}`);
                     currentUser.flappyJoCustomization = Array.from(currentUserMapObject);
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    if (currentUser.flappyJoCustomization[0][1] !== 'coral') {
+                        document.querySelector('#player-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[0][1]}`;
+                    }
+                    if (currentUser.flappyJoCustomization[1][1] !== 'black') {
+                        document.querySelector('#obstacle-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[1][1]}`;
+                    }
+                    if (currentUser.flappyJoCustomization[2][1] !== 'rgb(249, 245, 231)') {
+                        document.querySelector('#background-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
+                    }
                 }
             }
         });
