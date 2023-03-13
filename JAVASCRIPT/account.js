@@ -20,6 +20,11 @@ function User(userName, passWord, points) {
     this.passWord = passWord;
     this.points = points;
     this.items = [];
+    this.flappyJoCustomization = new Map([
+        ['character', undefined],
+        ['obstacle', undefined],
+        ['background', undefined]
+    ]);
 };
 
 const loginBtn = document.getElementById('login-btn');
@@ -62,7 +67,9 @@ createBtn.addEventListener('click', function() {
                 setTimeout(() => {
                     loginError.textContent = '';
                 }, 5000);
-                jocadeUsers.push(new User(userName.value, passWord.value, 0));
+                const newUser = new User(userName.value, passWord.value, 0);
+                newUser.flappyJoCustomization = Array.from(newUser.flappyJoCustomization);
+                jocadeUsers.push(newUser);
                 localStorage.setItem('jocadeUsers', JSON.stringify(jocadeUsers));
             }
         }

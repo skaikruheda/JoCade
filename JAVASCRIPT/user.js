@@ -11,6 +11,7 @@ document.getElementById('disconnect-btn').onclick = function() {
         if (jocadeUsers[i].userName === currentUser.userName && jocadeUsers[i].passWord === currentUser.passWord) {
             jocadeUsers[i].points = currentUser.points;
             jocadeUsers[i].items = currentUser.items;
+            jocadeUsers[i].flappyJoCustomization = currentUser.flappyJoCustomization;
         }
     }
     localStorage.clear();

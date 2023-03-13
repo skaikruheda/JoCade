@@ -8,12 +8,6 @@ if (currentUserFromLocalStorage) {
 document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
 let flappyJoContainer = document.querySelector('.flappy-jo-container');
 
-let customizationValue = new Map([
-    ['character', undefined],
-    ['obstacle', undefined],
-    ['background', undefined]
-]);
-
 function gameMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(241, 247, 181)';
     flappyJoContainer.innerHTML = `
@@ -66,18 +60,15 @@ function startGame() {
     const animationName = window.getComputedStyle(obstacle).getPropertyValue('animation-name');
     const animation = document.getAnimations().find(anim => anim.animationName === animationName);
 
-    let customizationValueFromLocalStorage = JSON.parse(localStorage.getItem('customizationValue'));
-    if (customizationValueFromLocalStorage) {
-        if (customizationValueFromLocalStorage[0][1] !== null) {
-            player.style.backgroundColor = `${customizationValueFromLocalStorage[0][1]}`;
-        }
-        if (customizationValueFromLocalStorage[1][1] !== null) {
-            obstacle.style.backgroundColor = `${customizationValueFromLocalStorage[1][1]}`;
-        }
-        if (customizationValueFromLocalStorage[2][1] !== null) {
-            flappyJoContainer.style.backgroundColor = `${customizationValueFromLocalStorage[2][1]}`;
-            gap.style.backgroundColor = `${customizationValueFromLocalStorage[2][1]}`;
-        }
+    if (currentUser.flappyJoCustomization[0][1] !== null) {
+        player.style.backgroundColor = `${currentUser.flappyJoCustomization[0][1]}`;
+    }
+    if (currentUser.flappyJoCustomization[1][1] !== null) {
+        obstacle.style.backgroundColor = `${currentUser.flappyJoCustomization[1][1]}`;
+    }
+    if (currentUser.flappyJoCustomization[2][1] !== null) {
+        flappyJoContainer.style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
+        gap.style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
     }
 
     gap.addEventListener('animationiteration', () => {
@@ -356,8 +347,10 @@ function customizationMenu() {
         value.addEventListener('click', (event) => {
             if (event.target.classList.length >= 2) {
                 if (currentUser.items.includes(event.target.classList[1])) {
-                    customizationValue.set(`${event.target.classList[1].split('-')[1]}`, `${event.target.classList[1].split('-')[0]}`);
-                    localStorage.setItem('customizationValue', JSON.stringify(Array.from(customizationValue)));
+                    const currentUserMapObject = new Map(currentUser.flappyJoCustomization);
+                    currentUserMapObject.set(`${event.target.classList[1].split('-')[1]}`, `${event.target.classList[1].split('-')[0]}`);
+                    currentUser.flappyJoCustomization = Array.from(currentUserMapObject);
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 }
             }
         });
