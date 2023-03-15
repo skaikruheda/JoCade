@@ -8,6 +8,18 @@ if (currentUserFromLocalStorage) {
 document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
 let flappyJoContainer = document.querySelector('.flappy-jo-container');
 
+window.onload = function() {
+    var backgroundAudio = new Audio('../AUDIO/flappyJoBackgroundMusic.mp3');
+    backgroundAudio.play();
+    backgroundAudio.loop;
+}
+
+window.onunload = function() {
+    var backgroundAudio = new Audio('../AUDIO/flappyJoBackgroundMusic.mp3');
+    backgroundAudio.pause();
+    backgroundAudio.loop;
+}
+
 function gameMenu() {
     flappyJoContainer.style.backgroundColor = 'rgb(241, 247, 181)';
     flappyJoContainer.innerHTML = `
