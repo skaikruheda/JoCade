@@ -360,15 +360,17 @@ function customizationMenu() {
         </div>
     `;
 
-    if (currentUser.flappyJoCustomization[0][1] !== 'coral') {
-        document.querySelector('#player-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[0][1]}`;
-    }
-    if (currentUser.flappyJoCustomization[1][1] !== 'black') {
-        document.querySelector('#obstacle-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[1][1]}`;
-    }
-    if (currentUser.flappyJoCustomization[2][1] !== 'rgb(249, 245, 231)') {
-        document.querySelector('#background-selection').style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
-    }
+    const customizationSettings = [
+        { id: 'player-selection', color: currentUser.flappyJoCustomization[0][1], defaultColor: 'coral' },
+        { id: 'obstacle-selection', color: currentUser.flappyJoCustomization[1][1], defaultColor: 'black' },
+        { id: 'background-selection', color: currentUser.flappyJoCustomization[2][1], defaultColor: 'rgb(249, 245, 231)' }
+    ];
+      
+    customizationSettings.forEach(setting => {
+        if (setting.color !== setting.defaultColor) {
+          document.querySelector(`#${setting.id}`).style.backgroundColor = setting.color;
+        }
+    });
 
     document.querySelectorAll('.game-options').forEach((value, index, array) => {
         value.addEventListener('click', (event) => {
@@ -393,17 +395,16 @@ function customizationMenu() {
     });
 }
 
+const menuFunctions = {
+    'start-btn': startGame,
+    'marketplace-btn': shopMenu,
+    'customization-btn': customizationMenu,
+    'return-btn': gameMenu
+};
+  
 flappyJoContainer.addEventListener('click', (event) => {
-    if (event.target.getAttribute('id') === 'start-btn') {
-        startGame();
+    const buttonId = event.target.getAttribute('id');
+    if (buttonId in menuFunctions) {
+      menuFunctions[buttonId]();
     }
-    else if (event.target.getAttribute('id') === 'marketplace-btn') {
-        shopMenu();
-    }
-    else if (event.target.getAttribute('id') === 'customization-btn') {
-        customizationMenu();
-    }
-    else if (event.target.getAttribute('id') === 'return-btn') {
-        gameMenu();
-    }
-});
+});  
