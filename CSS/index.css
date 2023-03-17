@@ -59,6 +59,13 @@ a:hover {
     padding: 50px;
 }
 
+.description img {
+    width: 25%;
+    height: 25%;
+    margin: 20px;
+    border: 1px solid black;
+}
+
 .game-image-description {
     margin-top: 20px;
     display: flex;
@@ -258,7 +265,8 @@ input {
 }
 
 .flappyjo {
-    background-color: green;
+    background-color: white;
+    text-align: center;
 }
 
 /* flappyjo.html */
