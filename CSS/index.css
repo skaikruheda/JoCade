@@ -264,7 +264,7 @@ input {
     margin: 20px;
 }
 
-.flappyjo {
+.flappyjo, .endlessjo {
     background-color: white;
     text-align: center;
 }
@@ -279,7 +279,7 @@ input {
     width: 90%;
 }
 
-.flappy-jo-container {
+.flappy-jo-container, .endlessjo-container {
     width: 90%;
     background-color: rgb(241, 247, 181);
     height: 500px;

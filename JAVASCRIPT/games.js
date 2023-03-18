@@ -13,6 +13,10 @@ if (currentUser) {
     flappyjo.addEventListener('click', function() {
         document.location = '../HTML/flappyjo.html';
     });
+    let endlessjo = document.querySelector('.endlessjo');
+    endlessjo.addEventListener('click', function() {
+        document.location = '../HTML/endlessjo.html';
+    });
 } else {
     document.getElementById('game-message').textContent = 'Status: You are NOT logged in, you cannot play!';
     document.getElementById('game-message').style.color = 'red';
