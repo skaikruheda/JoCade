@@ -322,6 +322,23 @@ input {
     border-radius: 20px;
 }
 
+.endlessjo-container > h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.endlessjo-container > button {
+    display: block;
+    width: 50%;
+    margin: 30px auto;
+    padding: 10px 15px;
+    background-color: rgb(58, 152, 185);
+    font-size: 24px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
 #menu-title {
     border: 1px solid black;
     width: 50%;
