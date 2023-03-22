@@ -436,3 +436,22 @@ input {
     width: 90%;
     margin: 20px auto;
 }
+
+/* endlessjo.html */
+
+#endlessjo-character {
+    width: 5%;
+    height: 15%;
+    background-color: brown;
+    position: relative;
+    top: 85%;
+}
+
+#endlessjo-obstacle {
+    width: 5%;
+    height: 5%;
+    background-color: seagreen;
+    position: relative;
+    top: 80%;
+    left: 96%;
+}

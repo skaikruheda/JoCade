@@ -23,6 +23,8 @@ function startGame() {
     endlessJoContainer.focus();
     endlessJoContainer.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
+        <div id="endlessjo-character"></div>
+        <div id="endlessjo-obstacle"></div>
     `;
 
     document.querySelector('#game-score').style.visibility = 'visible';
