@@ -442,9 +442,14 @@ input {
 #endlessjo-character {
     width: 5%;
     height: 15%;
+    left: 2%;
     background-color: brown;
     position: relative;
     top: 85%;
+}
+
+.jump-action {
+    animation: endlessjo-jump 500ms;
 }
 
 #endlessjo-obstacle {
@@ -454,4 +459,17 @@ input {
     position: relative;
     top: 80%;
     left: 96%;
+    animation: endlessjo-obstacle 1s infinite linear;
+}
+
+@keyframes endlessjo-jump {
+    0% {top: 86%}
+    30% {top: 60%}
+    50% {top: 60%}
+    100% {top: 86%}
+}
+
+@keyframes endlessjo-obstacle {
+    0% {left: 100%}
+    100% {left: -10%}
 }
