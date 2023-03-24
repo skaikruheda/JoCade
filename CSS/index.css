@@ -448,8 +448,15 @@ input {
     top: 85%;
 }
 
-.jump-action {
+.endlessjo-jump-animate {
     animation: endlessjo-jump 500ms;
+}
+
+@keyframes endlessjo-jump {
+    0% {top: 86%}
+    30% {top: 60%}
+    50% {top: 60%}
+    100% {top: 86%}
 }
 
 #endlessjo-obstacle {
@@ -459,14 +466,7 @@ input {
     position: relative;
     top: 80%;
     left: 96%;
-    animation: endlessjo-obstacle 1s infinite linear;
-}
-
-@keyframes endlessjo-jump {
-    0% {top: 86%}
-    30% {top: 60%}
-    50% {top: 60%}
-    100% {top: 86%}
+    animation: endlessjo-obstacle 2s infinite linear;
 }
 
 @keyframes endlessjo-obstacle {

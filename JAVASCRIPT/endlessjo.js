@@ -28,6 +28,25 @@ function startGame() {
     `;
 
     document.querySelector('#game-score').style.visibility = 'visible';
+    let character = document.querySelector('#endlessjo-character');
+    let obstacle = document.querySelector('#endlessjo-obstacle');
+
+    function jumpAction() {
+        if (character.classList != 'endlessjo-jump-animate') {
+            character.classList.add('endlessjo-jump-animate');
+        }
+        setTimeout(() => {
+            character.classList.remove('endlessjo-jump-animate');
+        }, 500);
+    }
+
+    const jumpHandler = (event) => {
+        if (event.key === ' ' || event.key === 'ArrowUp') {
+            jumpAction();
+        }
+    };
+
+    endlessJoContainer.addEventListener('keydown', jumpHandler);
 }
 
 function shopMenu() {
