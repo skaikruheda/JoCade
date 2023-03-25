@@ -473,3 +473,10 @@ input {
     0% {left: 100%}
     100% {left: -10%}
 }
+
+/* crazyassault.html */
+
+canvas {
+    border: 1px solid black;
+    margin-left: 10%;
+}
