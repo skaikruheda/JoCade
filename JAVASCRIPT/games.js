@@ -17,6 +17,10 @@ if (currentUser) {
     endlessjo.addEventListener('click', function() {
         document.location = '../HTML/endlessjo.html';
     });
+    let crazyassault = document.querySelector('.crazyassault');
+    crazyassault.addEventListener('click', function() {
+        document.location = '../HTML/crazyassault.html';
+    });
 } else {
     document.getElementById('game-message').textContent = 'Status: You are NOT logged in, you cannot play!';
     document.getElementById('game-message').style.color = 'red';
