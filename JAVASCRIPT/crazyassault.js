@@ -1,12 +1,3 @@
-const currentUserFromLocalStorage = JSON.parse(localStorage.getItem('currentUser'));
-let currentUser;
-
-if (currentUserFromLocalStorage) {
-    currentUser = currentUserFromLocalStorage;
-}
-
-document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
-
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
@@ -48,6 +39,7 @@ class Debree {
         context.fill();
     }
     update() {
+        this.draw();
         this.x = this.x + this.speed.x;
         this.y = this.y + this.speed.y;
     }
@@ -60,14 +52,22 @@ const player = new Player(x, y, 30, 'blue');
 
 player.draw();
 
-const debree = new Debree(canvas.width / 2, canvas.height / 2, 5, 'red', { x: 1, y: 1 });
+const obstacles = [];
 
 function animate() {
     requestAnimationFrame(animate);
-    debree.draw();
-    debree.update();
+    obstacles.forEach((value, index, array) => {
+        value.update();
+    });
 }
 
-canvas.addEventListener('click', function(event) {});
+canvas.addEventListener('click', function(event) {
+    const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
+    const speed = {
+        x: Math.cos(angle),
+        y: Math.sin(angle)
+    };
+    obstacles.push(new Debree(canvas.width / 2, canvas.height / 2, 5, 'red', speed));
+});
 
 animate();
