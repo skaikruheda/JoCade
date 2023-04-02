@@ -17,9 +17,13 @@ if (currentUser) {
     endlessjo.addEventListener('click', function() {
         document.location = '../HTML/endlessjo.html';
     });
-    let crazyassault = document.querySelector('.crazyassault');
-    crazyassault.addEventListener('click', function() {
-        document.location = '../HTML/crazyassault.html';
+    let trivia = document.querySelector('.trivia');
+    trivia.addEventListener('click', function() {
+        document.location = '../HTML/trivia.html';
+    });
+    let mathexpert = document.querySelector('.mathexpert');
+    mathexpert.addEventListener('click', function() {
+        document.location = '../HTML/mathexpert.html';
     });
 } else {
     document.getElementById('game-message').textContent = 'Status: You are NOT logged in, you cannot play!';
