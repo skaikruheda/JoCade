@@ -11,7 +11,7 @@ let gameBox = document.querySelector('.game-box');
 function gameMenu() {
     gameBox.style.backgroundColor = 'rgb(241, 247, 181)';
     gameBox.innerHTML = `
-        <h1>Endless Jo</h1>
+        <h1>The Matrix</h1>
         <button id="start-btn">Start</button>
         <button id="marketplace-btn">Marketplace</button>
         <button id="customization-btn">Customization</button>
@@ -23,30 +23,7 @@ function startGame() {
     gameBox.focus();
     gameBox.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
-        <div id="endlessjo-character"></div>
-        <div id="endlessjo-obstacle"></div>
     `;
-
-    document.querySelector('#game-score').style.visibility = 'visible';
-    let character = document.querySelector('#endlessjo-character');
-    let obstacle = document.querySelector('#endlessjo-obstacle');
-
-    function jumpAction() {
-        if (character.classList != 'endlessjo-jump-animate') {
-            character.classList.add('endlessjo-jump-animate');
-        }
-        setTimeout(() => {
-            character.classList.remove('endlessjo-jump-animate');
-        }, 500);
-    }
-
-    const jumpHandler = (event) => {
-        if (event.key === ' ' || event.key === 'ArrowUp') {
-            jumpAction();
-        }
-    };
-
-    gameBox.addEventListener('keydown', jumpHandler);
 }
 
 function shopMenu() {

@@ -6,7 +6,7 @@ if (currentUserFromLocalStorage) {
 }
 
 document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
-let flappyJoContainer = document.querySelector('.flappy-jo-container');
+let gameBox = document.querySelector('.game-box');
 
 window.onload = function() {
     var backgroundAudio = new Audio('../AUDIO/flappyJoBackgroundMusic.mp3');
@@ -21,8 +21,8 @@ window.onunload = function() {
 }
 
 function gameMenu() {
-    flappyJoContainer.style.backgroundColor = 'rgb(241, 247, 181)';
-    flappyJoContainer.innerHTML = `
+    gameBox.style.backgroundColor = 'rgb(241, 247, 181)';
+    gameBox.innerHTML = `
         <h1>Flappy Jo</h1>
         <button id="start-btn">Start</button>
         <button id="marketplace-btn">Marketplace</button>
@@ -32,8 +32,8 @@ function gameMenu() {
 }
 
 function startGame() {
-    flappyJoContainer.focus();
-    flappyJoContainer.innerHTML = `
+    gameBox.focus();
+    gameBox.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <div id="obstacle"></div>
         <div id="gap"></div>
@@ -43,7 +43,7 @@ function startGame() {
     document.querySelector('#game-score').style.visibility = 'visible';
 
     function gameOver() {
-        flappyJoContainer.innerHTML = `
+        gameBox.innerHTML = `
             <h1>Game Over</h1>
             <h2 id="earned-points"></h2>
             <button onclick="startGame()">Try Again</button>
@@ -57,7 +57,7 @@ function startGame() {
     }
 
     function endGame() {
-        flappyJoContainer.removeEventListener('keydown', jumpHandler);
+        gameBox.removeEventListener('keydown', jumpHandler);
         clearInterval(alwaysRun);
         setTimeout(gameOver, 50);
         return;
@@ -79,7 +79,7 @@ function startGame() {
         obstacle.style.backgroundColor = `${currentUser.flappyJoCustomization[1][1]}`;
     }
     if (currentUser.flappyJoCustomization[2][1] !== null) {
-        flappyJoContainer.style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
+        gameBox.style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
         gap.style.backgroundColor = `${currentUser.flappyJoCustomization[2][1]}`;
     }
 
@@ -96,7 +96,7 @@ function startGame() {
         }
     };
 
-    flappyJoContainer.addEventListener('keydown', jumpHandler);
+    gameBox.addEventListener('keydown', jumpHandler);
 
     document.querySelector('#return-btn').addEventListener('click', () => {
         clearTimeout(alwaysRun);
@@ -147,8 +147,8 @@ function startGame() {
 }
 
 function shopMenu() {
-    flappyJoContainer.style.backgroundColor = 'rgb(253, 138, 138)';
-    flappyJoContainer.innerHTML = `
+    gameBox.style.backgroundColor = 'rgb(253, 138, 138)';
+    gameBox.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <h1 id="menu-title">Shop</h1>
         <div id="pricing-info">Red - 250, Blue - 500, Green - 750, Yellow - 1000</div>
@@ -328,8 +328,8 @@ function shopMenu() {
 }
 
 function customizationMenu() {
-    flappyJoContainer.style.backgroundColor = 'rgb(158, 161, 212)';
-    flappyJoContainer.innerHTML = `
+    gameBox.style.backgroundColor = 'rgb(158, 161, 212)';
+    gameBox.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
         <h1 id="menu-title">Customization</h1>
         <h2 class="flappy-shop">Character</h2>
@@ -402,7 +402,7 @@ const menuFunctions = {
     'return-btn': gameMenu
 };
   
-flappyJoContainer.addEventListener('click', (event) => {
+gameBox.addEventListener('click', (event) => {
     const buttonId = event.target.getAttribute('id');
     if (buttonId in menuFunctions) {
       menuFunctions[buttonId]();

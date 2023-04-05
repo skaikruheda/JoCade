@@ -11,7 +11,7 @@ let gameBox = document.querySelector('.game-box');
 function gameMenu() {
     gameBox.style.backgroundColor = 'rgb(241, 247, 181)';
     gameBox.innerHTML = `
-        <h1>Endless Jo</h1>
+        <h1>Hot Pursuit</h1>
         <button id="start-btn">Start</button>
         <button id="marketplace-btn">Marketplace</button>
         <button id="customization-btn">Customization</button>
@@ -23,30 +23,78 @@ function startGame() {
     gameBox.focus();
     gameBox.innerHTML = `
         <img id="return-btn" src="../IMAGE/return.png" width="10%" height="10%"></img>
-        <div id="endlessjo-character"></div>
-        <div id="endlessjo-obstacle"></div>
+        <div id="hot-pursuit-game">
+            <div id="hot-pursuit-obstacle"></div>
+            <div id="hot-pursuit-character"></div>
+        </div>
     `;
-
     document.querySelector('#game-score').style.visibility = 'visible';
-    let character = document.querySelector('#endlessjo-character');
-    let obstacle = document.querySelector('#endlessjo-obstacle');
 
-    function jumpAction() {
-        if (character.classList != 'endlessjo-jump-animate') {
-            character.classList.add('endlessjo-jump-animate');
+    let gameScore = 0;
+    let hotPursitGame = document.querySelector('#hot-pursuit-game');
+    let hotPursitObstacle = document.querySelector('#hot-pursuit-obstacle');
+    let hotPursitCharacter = document.querySelector('#hot-pursuit-character');
+
+    function goLeft() {
+        let characterPosition = parseInt(window.getComputedStyle(hotPursitCharacter).getPropertyValue('left'));
+        characterPosition -= 100;
+        if (characterPosition >= 0) {
+            hotPursitCharacter.style.left = characterPosition + 'px';
         }
-        setTimeout(() => {
-            character.classList.remove('endlessjo-jump-animate');
-        }, 500);
     }
 
-    const jumpHandler = (event) => {
-        if (event.key === ' ' || event.key === 'ArrowUp') {
-            jumpAction();
+    function goRight() {
+        let characterPosition = parseInt(window.getComputedStyle(hotPursitCharacter).getPropertyValue('left'));
+        characterPosition += 100;
+        if (characterPosition < 300) {
+            hotPursitCharacter.style.left = characterPosition + 'px';
         }
-    };
+    }
 
-    gameBox.addEventListener('keydown', jumpHandler);
+    hotPursitObstacle.addEventListener('animationiteration', function() {
+        gameScore += 1;
+        let random = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+        this.style.left = (random * 100) + 'px';
+        document.querySelector('#game-score').textContent = 'Score: ' + (gameScore * 5);
+    });
+
+    setInterval(() => {
+        let characterLeft = parseInt(window.getComputedStyle(hotPursitCharacter).getPropertyValue('left'));
+        let obstacleLeft = parseInt(window.getComputedStyle(hotPursitObstacle).getPropertyValue('left'));
+        let obstacleTop = parseInt(window.getComputedStyle(hotPursitObstacle).getPropertyValue('top'));
+        if (characterLeft === obstacleLeft && obstacleTop < 500 && obstacleTop > 300) {
+            endGame();
+            hotPursitObstacle.style.animation = 'none';
+        }
+    }, 1);
+
+    function gameOver() {
+        gameBox.innerHTML = `
+            <h1>Game Over</h1>
+            <h2 id="earned-points"></h2>
+            <button onclick="startGame()">Try Again</button>
+            <button onclick="gameMenu()">Home</button>
+        `;
+        let pointsToJoCoins = gameScore * 5;
+        document.querySelector('#earned-points').textContent = 'You earned ' + pointsToJoCoins + ' JOCOINS';
+        currentUser.points += pointsToJoCoins;
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        document.querySelector('#game-coin').textContent = 'JOCOINS: ' + currentUser.points;
+    }
+
+    function endGame() {
+        setTimeout(gameOver, 50);
+        return;
+    }
+
+    gameBox.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            goLeft();
+        }
+        if (event.key === 'ArrowRight') {
+            goRight();
+        }
+    });
 }
 
 function shopMenu() {

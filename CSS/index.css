@@ -264,7 +264,7 @@ input {
     margin: 20px;
 }
 
-.flappyjo, .endlessjo, .trivia, .mathexpert {
+.flappyjo, .endlessjo, .trivia, .mathexpert, .hotpursuit {
     background-color: white;
     text-align: center;
 }
@@ -279,7 +279,7 @@ input {
     width: 90%;
 }
 
-.flappy-jo-container, .endlessjo-container {
+.game-box {
     width: 90%;
     background-color: rgb(241, 247, 181);
     height: 500px;
@@ -305,12 +305,12 @@ input {
     left: 0;
 }
 
-.flappy-jo-container > h1 {
+.game-box > h1 {
     text-align: center;
     margin-top: 100px;
 }
 
-.flappy-jo-container > button {
+.game-box > button {
     display: block;
     width: 50%;
     margin: 30px auto;
@@ -474,8 +474,57 @@ input {
     100% {left: -10%}
 }
 
-/* crazyassault.html */
+/* matrix.html */
 
-canvas {
+#hot-pursuit-game {
+    width: 300px;
+    height: 500px;
     border: 1px solid black;
+    margin: auto;
+    background-image: url(../IMAGE/road.png);
+}
+
+#hot-pursuit-character {
+    width: 100px;
+    height: 100px;
+    background-image: url(../IMAGE/car.png);
+    position: relative;
+    top: 300px;
+    left: 100px;
+    animation: carShake 1s infinite;
+}
+
+#hot-pursuit-obstacle {
+    width: 100px;
+    height: 100px;
+    background-image: url(../IMAGE/box.png);
+    background-size: cover;
+    position: relative;
+    animation: comeDown 1.5s infinite, spin 1.5s infinite;
+}
+
+@keyframes comeDown {
+    0% { 
+        top: -100px; 
+    }
+    100% { 
+        top: 500px; 
+    }
+}
+
+@keyframes carShake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-2deg); }
+    75% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -21,9 +21,9 @@ if (currentUser) {
     trivia.addEventListener('click', function() {
         document.location = '../HTML/trivia.html';
     });
-    let mathexpert = document.querySelector('.mathexpert');
-    mathexpert.addEventListener('click', function() {
-        document.location = '../HTML/mathexpert.html';
+    let hotpursuit = document.querySelector('.hotpursuit');
+    hotpursuit.addEventListener('click', () => {
+        document.location = '../HTML/hotpursuit.html';
     });
 } else {
     document.getElementById('game-message').textContent = 'Status: You are NOT logged in, you cannot play!';
