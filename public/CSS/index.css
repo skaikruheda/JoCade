@@ -1,0 +1,702 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', monospace;
+}
+
+.visible {
+    background-color: red;
+    color: blue;
+}
+
+body {
+    background-color: rgb(237, 219, 199);
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(249, 245, 231);
+    padding: 10px;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-side > div {
+    margin-right: 30px;
+}
+
+.nav-links {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(167, 114, 125);
+}
+
+.introduction {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 25px;
+    padding: 100px;
+    background-color: rgb(185, 243, 252);
+}
+
+.description {
+    text-align: center;
+    padding: 50px;
+}
+
+.description img {
+    width: 25%;
+    height: 25%;
+    margin: 20px;
+    border: 1px solid black;
+}
+
+.game-image-description {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(253, 138, 138);
+}
+
+.game-image-description > p {
+    padding: 20px;
+    font-size: 1.25rem;
+}
+
+.start {
+    display: block;
+    border: 1px solid black;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.start:hover {
+    background-color: rgb(87, 146, 58);
+    color: white;
+}
+
+.two {
+    background-color: rgb(241, 247, 181);
+}
+
+.three {
+    background-color: rgb(168, 209, 209);
+}
+
+.four {
+    background-color: rgb(158, 161, 212);
+}
+
+.end-description {
+    margin-top: 20px;
+}
+
+.access-container {
+    padding: 50px;
+    margin-top: 80px;
+}
+
+label, a, input {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: left;
+}
+
+input {
+    width: 50%;
+    padding: 10px 15px;
+    margin-top: 10px;
+}
+
+#username-label, #password-label {
+    margin-top: 15px;
+}
+
+#login-btn, #create-btn {
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin-top: 20px;
+}
+
+#account-message {
+    text-align: center;
+    margin-top: 15px;
+    color: red;
+}
+
+#login-btn:hover, #create-btn:hover {
+    background-color: rgb(167, 114, 125);
+    color: white;
+}
+
+.creator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 20px;
+}
+
+.creator-info {
+    text-align: center;
+}
+
+#my-selfie {
+    margin-right: 50px;
+}
+
+.about-jocade {
+    text-align: center;
+}
+
+.about-jocade > p {
+    text-align: center;
+    padding: 50px;
+    background-color: rgb(253, 138, 138);
+    margin: 50px;
+    font-size: 20px;
+}
+
+/* games.html */
+
+#game-alert {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    border: 3px solid black;
+}
+
+.flappy-bird {
+    font-size: 20px;
+    background-image: url(../IMAGE/flappy-bird-background.png);
+}
+
+.trivia {
+    font-size: 20px;
+    background-image: url(../IMAGE/trivia-background.png);
+}
+
+.crazy-type {
+    font-size: 20px;
+    background-image: url(../IMAGE/keyboard.png);
+}
+
+.guess-it {
+    font-size: 20px;
+    background-image: url(../IMAGE/guess-it-background.png);
+}
+
+.hot-pursuit {
+    font-size: 20px;
+    background-image: url(../IMAGE/hot-pursuit-background.jpg);
+}
+
+.game-intro {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    background-color: rgb(205, 215, 230);
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.game-item {
+    width: 33%;
+    height: 90%;
+    padding: 50px;
+    border: 1px solid black;
+    margin: 20px;
+    background-color: white;
+    text-align: center;
+}
+
+/* user.html */
+
+#welcome-user {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#welcome-text {
+    text-align: center;
+    margin-top: 10px;
+    padding: 50px;
+    font-size: 20px;
+    background-color: rgb(234, 224, 218);
+}
+
+.coins {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+#point-el {
+    margin-top: 20px;
+}
+
+.items-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.user-achievements {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 30px;
+    text-align: center;
+    list-style-type: none;
+}
+
+#disconnect-btn {
+    display: block;
+    padding: 10px 15px;
+    width: 50%;
+    margin: 50px auto;
+}
+
+/* flappy-bird.html */
+
+.flappy-bird-container {
+    min-width: 800px;
+    background-image: url(../IMAGE/flappy-bird-background.png);
+}
+
+#game-coin {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    margin: 30px auto;
+    width: 90%;
+}
+
+.game-box {
+    width: 90%;
+    background-color: rgb(241, 247, 181);
+    height: 500px;
+    border: 1px solid black;
+    margin: 50px auto;
+    margin-bottom: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#game-score {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgb(241, 247, 181);
+    font-size: 20px;
+    visibility: hidden;
+}
+
+#return-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.game-box > h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.game-box > button {
+    display: block;
+    width: 50%;
+    margin: 30px auto;
+    padding: 10px 15px;
+    background-color: rgb(58, 152, 185);
+    font-size: 24px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+.endlessjo-container > h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.endlessjo-container > button {
+    display: block;
+    width: 50%;
+    margin: 30px auto;
+    padding: 10px 15px;
+    background-color: rgb(58, 152, 185);
+    font-size: 24px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+#menu-title {
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgb(168, 209, 209);
+}
+
+.flappy-shop {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.game-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.game-btn {
+    text-align: center;
+    width: 25%;
+    height: 10%;
+    border: 1px solid black;
+    padding: 10px 15px;
+    margin: 10px;
+}
+
+#obstacle {
+    width: 10%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+    left: 100%;
+    animation: obstacle 2000ms infinite linear;
+}
+
+@keyframes obstacle {
+    0% {
+        left: 90%;
+    }
+    100% {
+        left: -10%;
+    }
+}
+
+#gap {
+    width: 10%;
+    height: 30%;
+    background-color: rgb(241, 247, 181);
+    position: relative;
+    left: 100%;
+    top: -40%;
+    animation: obstacle 2000ms infinite linear;
+}
+
+#player {
+    width: 5%;
+    height: 5%;
+    background-color: red;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 2%;
+}
+
+#earned-points {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* trivia.html */
+
+#trivia-visible {
+    background-color: aqua;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+.trivia-container {
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    background-image: url(../IMAGE/trivia-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+}
+
+#quiz-question {
+    margin: 0 auto;
+    margin-top: 80px;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 90%;
+    background-color: aquamarine;
+}
+
+.quiz-options {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.quiz-option {
+    border: 1px solid black;
+    margin: 10px;
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 5px;
+    background-color: chartreuse;
+}
+
+#submit-btn {
+    border: 1px solid black;
+    padding: 10px;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: deeppink;
+}
+
+/* crazy-type.html */
+
+.crazy-container {
+    background-image: url(../IMAGE/keyboard.png);
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+    background-color: rgb(241, 247, 181);
+    border: 1px solid black;
+    margin: 50px auto;
+    min-height: 600px;
+    margin-bottom: 50px;
+}
+
+.crazy-container > h1 {
+    background-color: white;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.crazy-container > button {
+    display: block;
+    width: 50%;
+    margin: 30px auto;
+    padding: 10px 15px;
+    background-color: rgb(58, 152, 185);
+    font-size: 24px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+
+#crazy-timer {
+    text-align: center;
+    font-size: 30px;
+    background-color: salmon;
+    color: black;
+    font-size: 40px;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.crazy-text {
+    font-size: 30px;
+    width: 50%;
+    background-color: white;
+    border: 1px solid black;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 10px;
+}
+
+.crazy-input {
+    font-size: 30px;
+    display: block; 
+    width: 50%;
+    background-color: rgb(255, 248, 222);
+    margin: 0 auto;
+    margin-top: 50px;
+    outline: none;
+    resize: none;
+    height: 20%;
+}
+
+.crazy-input:focus {
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.crazy-correct {
+    background-color: green;
+}
+
+.crazy-incorrect {
+    background-color: red;
+}
+
+/* hot-pursuit */
+
+#hot-pursuit-game {
+    width: 300px;
+    height: 500px;
+    border: 1px solid black;
+    margin: auto;
+    background-image: url(../IMAGE/road.png);
+}
+
+.hot-pursuit-container {
+    color: black;
+    background-image: url(../IMAGE/hot-pursuit-background.jpg);
+}
+
+#hot-pursuit-character {
+    width: 100px;
+    height: 100px;
+    background-image: url(../IMAGE/car.png);
+    position: relative;
+    top: 300px;
+    left: 100px;
+    animation: carShake 1s infinite;
+}
+
+#hot-pursuit-obstacle {
+    width: 100px;
+    height: 100px;
+    background-image: url(../IMAGE/box.png);
+    background-size: cover;
+    position: relative;
+    animation: comeDown 1.5s infinite, spin 1.5s infinite;
+}
+
+@keyframes comeDown {
+    0% { 
+        top: -100px; 
+    }
+    100% { 
+        top: 500px; 
+    }
+}
+
+@keyframes carShake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-2deg); }
+    75% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ranking.html */
+
+#ranking-link {
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 3px solid black;;
+}
+
+#ranking-link:hover {
+    background-color: aquamarine;
+    font-size: 20px;
+    color: black;
+}
+
+.ranking-container {
+    border: 1px solid black;
+    min-height: 100px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+#ranking-title {
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(58, 152, 185);
+    font-size: 20px;
+}
+
+.ranking-person {
+    text-align: center;
+    width: 80%;
+    border: 1px solid black;
+    background-color: cadetblue;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+#sort-users {
+    padding: 20px;
+    border: 1px solid black;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: coral;
+}
+
+#sort-users:hover {
+    background-color: blueviolet;
+    font-size: 20px;
+}
